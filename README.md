@@ -19,7 +19,6 @@ This repository contains a Python cleaning pipeline for the **Marketing Campaign
 - `marketing_campaign_cleaning.py` — main cleaning script
 - `data/marketing_campaign.csv` — original dataset (CSV or Excel)
 - `cleaned/marketing_campaign_cleaned.csv` — cleaned output
-- `images/` — dashboard images (optional)
 
 ## Requirements
 ```bash
