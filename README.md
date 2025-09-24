@@ -1,27 +1,26 @@
-# 🧹 Sample Superstore — Data Cleaning & Preprocessing
+# 🧹 Marketing Campaign — Data Cleaning & Preprocessing
 
-This repository contains Python code to clean and preprocess the popular **Sample Superstore** dataset.  
-It supports inputs in **CSV** or **Excel** formats and demonstrates best practices for data cleaning using **pandas**.
+This repository contains a Python cleaning pipeline for the **Marketing Campaign** dataset (customer purchases & campaign responses).
 
-## 🚀 What This Script Does
-- Loads dataset from `data/SampleSuperstore.csv`
-- Identifies and handles missing values (fills numeric with **median**, categorical with **mode**)
-- Removes duplicate rows using `drop_duplicates()`
-- Cleans Excel artifacts (e.g., `#REF!`, `NA`, stray characters)
-- Standardizes text values (segment, region, category, sub-category)
-- Converts date columns (e.g., `dt_customer`) to `datetime`, handling mixed formats using `dateutil`
-- Creates `age` column from `year_birth` (exact if `date_of_birth` exists, otherwise approximate)
-- Renames columns to lowercase with underscores for consistency
-- Saves cleaned data to both CSV and Excel in `cleaned/`
+## What the script does
+- Loads dataset from `data/marketing_campaign.csv` or `data/marketing_campaign.xlsx`
+- Cleans Excel artifacts (e.g., `#REF!`, `#N/A`)
+- Normalizes column names to `lowercase_with_underscores`
+- Parses mixed-format dates (e.g., `dt_customer`) using `dateutil`
+- Cleans `income` robustly and fills missing values with **median**
+- Cleans `kidhome` / `teenhome` (handles `#REF!`)
+- Creates `age` from `year_birth`
+- Computes `total_spent` (sum of all `mnt*` columns)
+- Computes `total_num_purchases` (sum of all `num*` columns)
+- Converts boolean/binary columns (AcceptedCmp*, Complain, Response) to integers
+- Removes duplicates and saves cleaned CSV/XLSX to `cleaned/`
 
-## 📂 Files
-- `superstore_cleaning.py` — main cleaning script
-- `data/SampleSuperstore.csv` or `data/SampleSuperstore.xlsx` — original dataset
-- `cleaned/superstore_cleaned.csv` — cleaned output (generated)
-- `cleaned/superstore_cleaned.xlsx` — cleaned output (generated)
-- `notebooks/` — optional Jupyter notebooks for further analysis or visualization
-- `images/` — screenshots of dashboards
+## Files
+- `marketing_campaign_cleaning.py` — main cleaning script
+- `data/marketing_campaign.csv` — original dataset (CSV or Excel)
+- `cleaned/marketing_campaign_cleaned.csv` — cleaned output
+- `images/` — dashboard images (optional)
 
-## 🛠️ Requirements
+## Requirements
 ```bash
 pip install pandas openpyxl python-dateutil
